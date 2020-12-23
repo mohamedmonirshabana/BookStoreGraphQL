@@ -1,13 +1,19 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
+import { GraphQLModule } from '@nestjs/graphql';
+import { AutherModule } from './Authers/authers..module';
+import { BooksModule } from './Books/books.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/myDB'),
+    MongooseModule.forRoot('mongodb://localhost/BookStore'),
+    GraphQLModule.forRoot({
+      autoSchemaFile: true
+    }),
+    AutherModule,
+    BooksModule
    ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
