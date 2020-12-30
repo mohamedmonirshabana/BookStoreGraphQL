@@ -1,0 +1,57 @@
+Create web ap for Book store online 
+
+Book => Auther
+Book:{
+    title:
+    price
+    preview pdf
+    summary
+    visitor AutoCount
+    AutherID
+}
+Auther:{
+    name
+    photo
+    summary
+    Date of Birth
+}
+
+user => for Read Books => login Token
+user{
+    fullname
+    phoneNumber
+    email
+    password
+    Role => Admin , user 
+}
+
+WishList => user Like Book and want to buy it in the Future
+
+WishList{
+    BookID
+    userID
+    Date, Time
+}
+
+Cart => user Get Book it's Deliver by Real Time 
+
+Cart{
+    userID
+    BookID
+    price
+    DateTime
+}
+
+
+Scenario 
+-user add phone Number -> get veryfy for phone 
+-user Register and Role is user => get Token for login
+-user Login => get Token if Valid , Return Error if not
+-user Look for All Book 
+-user look for oneBook By ID 
+-user Read all info and PDF file for preview Visit Count ++ 
+-user add Book to wishList or add to Cart  ( check if book add to wish List for this user Remove it )
+-Admin Login
+-Admin Add Book , Auther 
+-Admin Look for Top Books Rate 
+-Admin Look for Book in Cart to bye 

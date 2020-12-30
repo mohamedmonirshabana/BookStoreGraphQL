@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AutherModule } from './Authers/authers..module';
 import { BooksModule } from './Books/books.module';
+import { UserModule } from './users/user.module';
 
 @Module({
   imports: [
@@ -11,7 +12,8 @@ import { BooksModule } from './Books/books.module';
       autoSchemaFile: true
     }),
     AutherModule,
-    BooksModule
+    BooksModule,
+    UserModule
    ],
   controllers: [],
   providers: [],
