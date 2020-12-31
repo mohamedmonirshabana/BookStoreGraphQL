@@ -4,7 +4,7 @@ import { AutherInput } from './input/auther.input';
 import { AutherType } from './type/authers.type';
 import { Auther } from './interface/auther.interface';
 import { UseGuards } from '@nestjs/common';
-import { AuthGuard } from '../Auth/auth.guard';
+import { AdminGuard } from '../Auth/admin.guard';
 
 @Resolver()
 export class autherResolver{
@@ -23,13 +23,13 @@ export class autherResolver{
     }
 
     @Mutation(() => AutherType)
-    @UseGuards(AuthGuard)
+    @UseGuards(AdminGuard)
     async createAuther(@Args('input')input:AutherInput):Promise<Auther>{
         return await this.autherService.AddAuther(input);
     }
 
     @Mutation(() => AutherType)
-    @UseGuards(AuthGuard)
+    @UseGuards(AdminGuard)
     async updateAuther(@Args('id')id: string, @Args('input')input: AutherInput):Promise<Auther>{
         console.log('id ',id);
         return await this.autherService.EditAuther(id, input);

@@ -7,11 +7,15 @@ import { jwtConstants } from '../common/jwt.constants';
 export class AdminGuard implements CanActivate{
     async canActivate(context: ExecutionContext){
         const ctx = GqlExecutionContext.create(context).getContext();
-        if(!ctx.headers.authorization){
+        if(!ctx.req.headers.authorization){
             return false;
         }
-        ctx.user = await this.validateToken(ctx.headers.authorization);
-        return true;
+        ctx.user = await this.validateToken(ctx.req.headers.authorization);
+        console.log(ctx.user.role);
+        if(ctx.user.role === 'Admin'){
+            return true;
+        }
+        return false;
     }
 
     async validateToken(auth: string){
@@ -21,8 +25,9 @@ export class AdminGuard implements CanActivate{
         const token = auth.split(' ')[1];
 
         try{
-            const tok = await jwt.verify(token, jwtConstants.scret);
-            // const dec = await jwt.decode
+            const decode = await jwt.verify(token, jwtConstants.scret);
+            return decode;
+            // const d
         }catch(err){
             throw new HttpException('Invalid token', HttpStatus.UNAUTHORIZED);
         }

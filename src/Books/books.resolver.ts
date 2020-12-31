@@ -5,7 +5,7 @@ import { BookType, } from './type/books.type';
 import { BooksAuther } from './type/booksAuther.type';
 import { booksInterface, books } from './interface/books.interface';
 import { UseGuards } from '@nestjs/common';
-import { AuthGuard } from '../Auth/auth.guard';
+import { AdminGuard } from '../Auth/admin.guard';
 
 @Resolver()
 export class BooksResolver{
@@ -24,19 +24,19 @@ export class BooksResolver{
     }
 
     @Mutation(() => BooksAuther)
-    @UseGuards(AuthGuard)
+    @UseGuards(AdminGuard)
     async createBook(@Args('input')input: BookInput): Promise<booksInterface>{
         return await this.bookserv.addBook(input);
     }
 
     @Mutation(() => BooksAuther)
-    @UseGuards(AuthGuard)
+    @UseGuards(AdminGuard)
     async updateBook(@Args('id')id: string, @Args('input')input: BookInput): Promise<booksInterface>{
         return await this.bookserv.EditBook(id,input);
     }
 
     @Mutation(() => BooksAuther)
-    @UseGuards(AuthGuard)
+    @UseGuards(AdminGuard)
     async deleteBook(@Args('id')id: string) :Promise<booksInterface> {
         return await this.bookserv.DeleteBook(id);
     }

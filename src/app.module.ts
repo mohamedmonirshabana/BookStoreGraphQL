@@ -4,6 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AutherModule } from './Authers/authers..module';
 import { BooksModule } from './Books/books.module';
 import { UserModule } from './users/user.module';
+import { wishLitModule } from './wishList/wishlist.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { UserModule } from './users/user.module';
     }),
     AutherModule,
     BooksModule,
-    UserModule
+    UserModule,
+    wishLitModule
    ],
   controllers: [],
   providers: [],
