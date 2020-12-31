@@ -28,7 +28,7 @@ export class userService{
                 fullname: userinput.fullname,
                 email: userinput.email,
                 password: myPasswordEnc,
-                Role: 'user'
+                Role: userinput.Role
             });
             await userdata.save();
             return userdata;
