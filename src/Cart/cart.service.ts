@@ -28,8 +28,6 @@ export class CartService{
             BookID:result.bookid,
             BookPrice:bookprice.price
         };
-        // const Arrob: [] =bookobj;
-        // Arrob.push(bookobj);
         const cart= await this.cartModel.create({
             userID:result.userid,
             VisaNumber:visanumber,
@@ -37,6 +35,9 @@ export class CartService{
             Booklist: [bookobj],
             totalMoney:bookprice.price
         });
+
+        await this.wishService.removewish(id);
+        
 
         return cart;
     }
