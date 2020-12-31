@@ -10,6 +10,7 @@ import { wishListService } from './wishlist.service';
     imports:[
         MongooseModule.forFeature([{name:WishList_TABLE_NAME, schema:wishListSchema}]),
     ],
-    providers:[ wishListService, wishlistResolver ]
+    providers:[ wishListService, wishlistResolver ],
+    exports:[wishListService]
 })
 export class wishLitModule{}

@@ -5,6 +5,7 @@ import { AutherModule } from './Authers/authers..module';
 import { BooksModule } from './Books/books.module';
 import { UserModule } from './users/user.module';
 import { wishLitModule } from './wishList/wishlist.module';
+import { CartModule } from './Cart/cart.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { wishLitModule } from './wishList/wishlist.module';
     AutherModule,
     BooksModule,
     UserModule,
-    wishLitModule
+    wishLitModule,
+    CartModule
    ],
   controllers: [],
   providers: [],
